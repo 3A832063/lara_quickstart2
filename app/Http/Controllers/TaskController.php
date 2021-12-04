@@ -39,4 +39,11 @@ class TaskController extends Controller
 
         return redirect('/tasks');
     }
+
+    public function destroy(Request $request, Task $task)
+    {
+        $this->authorize('destroy', $task); //可註解或略過
+        $task->delete();
+        return redirect('/tasks');
+    }
 }
